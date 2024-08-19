@@ -1,0 +1,17 @@
+{
+	"extends": "@collaborne/tsconfig-react",
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"outDir": "dist",
+		"sourceMap": true,
+		"declaration": true,
+		"experimentalDecorators": true,
+		"downlevelIteration": true
+	},
+	"include": [
+		"src/**/*",
+		".storybook/**/*",
+		"vite.config.ts"
+	],
+	"exclude": ["node_modules/**/*", "dist/**/*", ".yalc/**/*"]
+}

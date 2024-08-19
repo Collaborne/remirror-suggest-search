@@ -1,0 +1,18 @@
+{
+	"search-editor.clear-button": {
+		"message": "Clear",
+		"description": "Button label to clear the search box input value"
+	},
+	"static-search-editor.prompt_filter": {
+		"message": "Prompt filter",
+		"description": "Label used in search box to show text as a label"
+	},
+	"mention-suggester.option-end-icon-search": {
+		"message": "search",
+		"description": "Label used at the end of suggester options to search"
+	},
+	"mention-suggester.option-end-icon-select": {
+		"message": "select value",
+		"description": "Label used at the end of suggester options to select an option"
+	}
+}
