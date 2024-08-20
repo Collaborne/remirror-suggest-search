@@ -1,4 +1,3 @@
-import { TagChip, UserChip } from '@collaborne/carrot-styles';
 import { Chip } from '@mui/material';
 import { useMemo } from 'react';
 
@@ -107,10 +106,10 @@ export function useEditorMention() {
 				name: 'unknown',
 			};
 
-			return <TagChip tag={unknownTag} size="small" />;
+			return <Chip label={unknownTag.name} size="small" />;
 		}
 
-		return <TagChip tag={tag} size="small" />;
+		return <Chip label={tag.name} size="small" />;
 	};
 	const renderLabel = (params: { id: string }) => {
 		return <Chip variant="filled" size="small" label={params.id} />;
@@ -122,9 +121,8 @@ export function useEditorMention() {
 	const renderUser = (params: { id: string }) => {
 		const user = USERS.find(u => u.id === params.id);
 		return (
-			<UserChip
-				name={user?.name}
-				image={user?.image}
+			<Chip
+				label={user?.name}
 				size="small"
 				variant="filled"
 			/>

@@ -1,4 +1,4 @@
-import { Button, ButtonGroup } from '@mui/material';
+import { Button, ButtonGroup, Grid } from '@mui/material';
 import { action } from '@storybook/addon-actions';
 import { useRef } from 'react';
 import { PiCalendarBlank, PiTag } from 'react-icons/pi';
@@ -10,8 +10,6 @@ import {
 	SearchEditor,
 	SearchEditorProps,
 } from '../../src/search-editor/SearchEditor';
-import { withIntl } from '../decorators/with-intl';
-import { withTheme } from '../decorators/with-theme';
 
 import { Story } from './utils/doc';
 import { TAGS, USERS, useEditorMention } from './utils/hooks/useEditorMention';
@@ -20,7 +18,6 @@ import { promiseAction } from './utils/promiseAction';
 export default {
 	title: 'Editors / Search Editor',
 	component: SearchEditor,
-	decorators: [withTheme, withIntl],
 };
 
 const SEARCH_QUERY = `list:item1,item2,item3 creator:${USERS[0].id} tag:${TAGS[0].id}`;
@@ -74,7 +71,13 @@ const Template: Story<SearchEditorStoryArgs> = (
 	};
 
 	return (
-		<div>
+		<Grid
+			direction={'row'}
+			container
+			gap={1}
+			alignContent={'center'}
+			alignItems={'center'}
+		>
 			<SearchEditor
 				placeholder="Search by tags or users"
 				fields={fields}
@@ -83,15 +86,16 @@ const Template: Story<SearchEditorStoryArgs> = (
 				getSuggestions={promiseAction('getSuggestions')}
 				{...props}
 			/>
+
 			<ButtonGroup>
 				<Button
 					variant="contained"
 					onClick={() => editorRef.current?.clearContent()}
 				>
 					Clear content
-				</Button>{' '}
+				</Button>
 			</ButtonGroup>
-		</div>
+		</Grid>
 	);
 };
 

@@ -24,14 +24,14 @@ const useStyles = makeStyles()(theme => {
 		emptyNode: {
 			'&:first-of-type::before': {
 				position: 'absolute',
-				color: theme.palette.text.hint,
+				color: theme.palette.text.secondary,
 				pointerEvents: 'none',
 				height: 0,
 				content: 'attr(data-placeholder)',
 			},
 		},
 		mentionClass: {
-			color: theme.palette.text.link,
+			color: theme.palette.action.active,
 		},
 		editor: {
 			maxHeight: theme.spacing(3),
@@ -76,6 +76,7 @@ export function SearchEditorProvider({
 	onSubmit,
 	placeholder,
 	children,
+	disabledSearch,
 }: SearchEditorProviderProps): JSX.Element {
 	const { classes } = useStyles();
 	const [initialContent, setInitialContent] =
@@ -116,6 +117,7 @@ export function SearchEditorProvider({
 			onFocus={onFocus}
 			onBlur={onBlur}
 			onChange={onChange}
+			editable={!disabledSearch}
 		>
 			<SearchImperativeHandle ref={innerRef} onSubmit={onSubmit} />
 			{children}

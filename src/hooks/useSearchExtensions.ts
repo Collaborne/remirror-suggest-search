@@ -8,7 +8,7 @@ import {
 	MentionExtension,
 	MentionExtensionMatcher,
 } from '../extensions/mention-extension';
-import { Fields } from '../search-editor';
+import { Fields } from '../search-editor/types';
 
 import { useDeepCompareMemoize } from './useDeepCompare';
 

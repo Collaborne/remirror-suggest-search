@@ -30,11 +30,11 @@ const useStyles = makeStyles()(theme => ({
 		top: 0,
 		width: '100%',
 		borderRadius: theme.shape.borderRadius,
-		border: `${theme.spacing(0.125)} solid ${theme.palette.dividerSubtle}`,
+		border: `${theme.spacing(0.125)} solid ${theme.palette.divider}`,
 		background: theme.palette.background.default,
 	},
 	activeContainer: {
-		boxShadow: theme.palette.boxShadow.huge,
+		boxShadow: theme.palette.background.default,
 	},
 	searchBox: {
 		padding: theme.spacing(1),
@@ -43,7 +43,7 @@ const useStyles = makeStyles()(theme => ({
 	footer: {
 		padding: theme.spacing(2),
 		width: '100%',
-		borderTop: `${theme.spacing(0.125)} solid ${theme.palette.dividerSubtle}`,
+		borderTop: `${theme.spacing(0.125)} solid ${theme.palette.divider}`,
 	},
 }));
 

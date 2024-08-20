@@ -5,7 +5,6 @@
 import {
 	ApplySchemaAttributes,
 	command,
-	CommandFunction,
 	ErrorConstant,
 	extension,
 	ExtensionTag,
@@ -33,6 +32,7 @@ import {
 	ShouldSkipProps,
 	Static,
 } from '@remirror/core';
+import type { CommandFunction } from '@remirror/core';
 import type { CreateEventHandlers } from '@remirror/extension-events';
 import { MarkPasteRule } from '@remirror/pm/paste-rules';
 import {
@@ -44,9 +44,9 @@ import {
 	isSplitReason,
 	MatchValue,
 	RangeWithCursor,
-	SuggestChangeHandlerProps,
 	Suggester,
 } from '@remirror/pm/suggest';
+import type { SuggestChangeHandlerProps } from '@remirror/pm/suggest';
 import { ReplaceAroundStep, ReplaceStep } from '@remirror/pm/transform';
 import { Plugin, PluginKey } from 'prosemirror-state';
 

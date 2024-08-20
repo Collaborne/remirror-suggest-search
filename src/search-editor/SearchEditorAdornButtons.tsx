@@ -1,7 +1,6 @@
 import { IconButton, Button, Divider } from '@mui/material';
 import { useCallback } from 'react';
 import { PiX } from 'react-icons/pi';
-import intl from 'react-intl-universal';
 import { makeStyles } from 'tss-react/mui';
 
 const useStyles = makeStyles()(theme => {
@@ -49,7 +48,7 @@ export default function SearchEditorAdornButtons({
 			{isActive && !isEmpty && (
 				<>
 					<Button onClickCapture={clearAnd(focus)} size="small" variant="text">
-						{intl.get('search-editor.clear-button')}
+						Clear
 					</Button>
 					<Divider orientation="vertical" flexItem />
 				</>

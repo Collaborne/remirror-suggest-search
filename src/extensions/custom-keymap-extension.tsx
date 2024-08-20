@@ -10,7 +10,6 @@ export class CustomKeymapExtension extends PlainExtension {
 	 */
 	public createKeymap(): KeyBindings {
 		return {
-			// eslint-disable-next-line @typescript-eslint/naming-convention
 			Enter() {
 				return true;
 			},

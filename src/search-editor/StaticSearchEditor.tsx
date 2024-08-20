@@ -3,7 +3,6 @@ import { Doc, RemirrorRenderer } from '@remirror/react-renderer';
 import type { MarkMap } from '@remirror/react-renderer';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { PiTextAlignLeft } from 'react-icons/pi';
-import intl from 'react-intl-universal';
 import { EMPTY_NODE, RemirrorJSON } from 'remirror';
 import { NamedMentionAtomNodeAttributes } from 'remirror/dist-types/extensions';
 
@@ -24,7 +23,7 @@ const Text: TextHandler = ({ node }) => {
 			<Chip
 				component="span"
 				variant="outlined"
-				label={intl.get('static-search-editor.prompt_filter')}
+				label={'Prompt filter'}
 				size="small"
 				icon={<PiTextAlignLeft />}
 			/>

@@ -13,8 +13,7 @@ import { useRenderOption } from './hooks/useRenderOption';
 import { useRenderSelectOptions } from './hooks/useRenderSelectOption';
 import useSuggestInput from './hooks/useSuggestInput';
 import { MentionSuggester } from './MentionSuggester';
-
-import { INPUT_OPTION, Fields } from '.';
+import { Fields, INPUT_OPTION } from './types';
 
 const GET_SUGGESTIONS_DEBOUNCE_MS = 300;
 

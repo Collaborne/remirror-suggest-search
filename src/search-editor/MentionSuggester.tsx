@@ -4,14 +4,12 @@ import MenuItem from '@mui/material/MenuItem';
 import { UseMenuNavigationReturn } from '@remirror/react';
 import { useMemo } from 'react';
 import { PiMagnifyingGlass, PiOption } from 'react-icons/pi';
-import intl from 'react-intl-universal';
 import { NamedMentionAtomNodeAttributes } from 'remirror/extensions';
 import { makeStyles } from 'tss-react/mui';
 
 import { isSelectOption } from './hooks/useRenderSelectOption';
 import { SuggesterSkeleton } from './SuggesterSkeleton';
-
-import { Fields } from '.';
+import { Fields } from './types';
 
 const useStyles = makeStyles()(theme => ({
 	fullWidth: {
@@ -27,18 +25,18 @@ const useStyles = makeStyles()(theme => ({
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		padding: theme.spacing(0, 0.625),
+		padding: theme.spacing(0.625, 0.625),
 	},
 	menuIconEnd: {
 		margin: theme.spacing(0, 0, 0, 1),
 	},
 	optionEndIcon: {
-		color: theme.palette.text.hint,
+		color: theme.palette.text.secondary,
 	},
 	startIconButton: {
 		color: `${theme.palette.text.primary} !important`,
-		borderRadius: theme.shape.borderRadiusSmall,
-		border: `${theme.spacing(0.125)} solid ${theme.palette.dividerSubtle}`,
+		borderRadius: theme.shape.borderRadius,
+		border: `${theme.spacing(0.125)} solid ${theme.palette.divider}`,
 	},
 	optionWrapper: {
 		flex: 1,
@@ -60,7 +58,7 @@ const useStyles = makeStyles()(theme => ({
 		position: 'relative',
 		width: '100%',
 		maxHeight: theme.spacing(40),
-		borderTop: `${theme.spacing(0.125)} solid ${theme.palette.dividerSubtle}`,
+		borderTop: `${theme.spacing(0.125)} solid ${theme.palette.divider}`,
 		overflow: 'auto',
 		padding: theme.spacing(0.5, 1),
 	},
@@ -146,9 +144,7 @@ export function MentionSuggester({
 							<div className={classes.optionWrapper}>{optionComponent}</div>
 							<ListItemIcon className={classes.menuIconEnd}>
 								<Typography variant="caption" className={classes.optionEndIcon}>
-									{!isSelect
-										? intl.get('mention-suggester.option-end-icon-search')
-										: intl.get('mention-suggester.option-end-icon-select')}
+									{!isSelect ? 'search' : 'select'}
 								</Typography>
 							</ListItemIcon>
 						</MenuItem>
