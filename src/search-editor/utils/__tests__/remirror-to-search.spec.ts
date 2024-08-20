@@ -26,6 +26,7 @@ describe('remirror-to-search', () => {
 				label: 'myLabel',
 				name: 'label',
 			}),
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		]) as any; // Add type assertion here
 		label.tags = ['label']; // Add the required 'tags' property
 

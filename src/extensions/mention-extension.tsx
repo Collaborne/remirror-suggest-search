@@ -584,22 +584,28 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 	): CommandFunction {
 		return props => {
 			const { label } = config;
+			let labelToAdd = label;
 			const { dispatch, tr } = props;
 
 			const lastNode = getLastTextNode(tr.doc);
 			const lastWord = getLastWord(lastNode?.node);
 			const isMatch = label.includes(lastWord || '');
-
+			const docSize = tr.doc.content.size - 1;
 			let range = {
-				from: tr.doc.content.size - 1,
-				to: tr.doc.content.size - 1,
+				from: docSize,
+				to: docSize,
 			};
 
 			if (isMatch) {
 				range = getRangeFromMatchedText(tr.doc, lastWord || '') || range;
+			} else {
+				const docText = tr.doc.textBetween(0, tr.doc.content.size - 1, ' ');
+				if (!docText.endsWith(' ')) {
+					labelToAdd = ` ${label}`;
+				}
 			}
 
-			tr.insertText(label, range?.from, range?.to);
+			tr.insertText(labelToAdd, range?.from, range?.to);
 			dispatch?.(tr);
 			return true;
 		};

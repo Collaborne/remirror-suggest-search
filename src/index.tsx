@@ -1,3 +1,4 @@
+export * from './search-editor/hooks';
 export type { StaticSearchEditorProps } from './search-editor/StaticSearchEditor';
 export { StaticSearchEditor } from './search-editor/StaticSearchEditor';
 export type { MentionSuggesterProps } from './search-editor/MentionSuggester';
