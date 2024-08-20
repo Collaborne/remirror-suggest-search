@@ -69,7 +69,6 @@
 		"@types/react-router-dom": "^5.1.8",
 		"@typescript-eslint/eslint-plugin": "^5.30.0",
 		"@vitejs/plugin-react": "^4.2.1",
-		"chromatic": "^6.10.1",
 		"copyfiles": "^2.4.1",
 		"cross-env": "^7.0.3",
 		"dotenv": "^16.0.1",
@@ -104,10 +103,6 @@
 		"ts-node": "~10.8.1",
 		"tsconfig-collaborne": "^1.8.1",
 		"tss-react": "^4.4.0",
-		"typedoc": "^0.23.9",
-		"typedoc-plugin-merge-modules": "^4.0.1",
-		"typedoc-plugin-missing-exports": "^1.0.0",
-		"typedoc-theme-hierarchy": "^3.0.0",
 		"typescript": "^5.1.6",
 		"webpack": "5.73.0"
 	},
