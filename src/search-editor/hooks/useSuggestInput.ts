@@ -7,7 +7,7 @@ import { getLastTextNode, getTextFromNode } from '../utils/get-last-text-node';
 import { remirrorToSearch } from '../utils/remirror-to-search';
 import { removeText } from '../utils/remove-text';
 
-export default function useSuggestInput(props: {
+export function useSuggestInput(props: {
 	doc: ProsemirrorNode;
 	fields: Fields;
 }) {

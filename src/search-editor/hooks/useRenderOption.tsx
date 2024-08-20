@@ -8,7 +8,7 @@ import { makeStyles } from 'tss-react/mui';
 import { INPUT_OPTION, Fields, MentionHandler } from '../types';
 import { convertMentionMarksToNodes } from '../utils/convert-mention-marks-to-mention-nodes';
 
-import useRenderMention from './useRenderMention';
+import { useRenderMention } from './useRenderMention';
 
 const useStyles = makeStyles()(theme => ({
 	editor: {

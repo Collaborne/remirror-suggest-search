@@ -6,7 +6,7 @@ import {
 } from 'remirror';
 import { makeStyles } from 'tss-react/mui';
 
-import useActiveMenu from '../../../src/search-editor/hooks/useActiveMenu';
+import { useActiveMenu } from '../../../src/search-editor/hooks/useActiveMenu';
 import { SearchEditorComponent } from './SearchEditorComponent';
 import {
 	SearchEditorProvider,

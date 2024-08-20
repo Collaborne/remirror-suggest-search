@@ -5,10 +5,7 @@ interface UseActiveMenuProps {
 	disabledSearch?: boolean;
 	onClose?: (doc: ProsemirrorNode) => void;
 }
-export default function useActiveMenu({
-	disabledSearch,
-	onClose,
-}: UseActiveMenuProps) {
+export function useActiveMenu({ disabledSearch, onClose }: UseActiveMenuProps) {
 	const [isActive, setIsActive] = useState(false);
 
 	const showMenu = useCallback(() => {

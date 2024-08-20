@@ -10,7 +10,7 @@ import { useSuggesterNavigation } from '../search-editor/hooks/useSuggesterNavig
 import { useCanShowSuggestions } from './hooks/useCanShowSuggestions';
 import { useRenderOption } from './hooks/useRenderOption';
 import { useRenderSelectOptions } from './hooks/useRenderSelectOption';
-import useSuggestInput from './hooks/useSuggestInput';
+import { useSuggestInput } from './hooks/useSuggestInput';
 import { MentionSuggester, MentionSuggesterProps } from './MentionSuggester';
 import { Fields, GetSuggestions, INPUT_OPTION } from './types';
 

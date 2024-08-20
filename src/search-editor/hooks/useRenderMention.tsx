@@ -3,7 +3,7 @@ import { NamedMentionAtomNodeAttributes } from 'remirror/extensions';
 
 import { Field, Fields } from '../types';
 
-export default function useRenderMention(props: { fields: Fields }) {
+export function useRenderMention(props: { fields: Fields }) {
 	const renderMention = useCallback(
 		(name: string, attrs: NamedMentionAtomNodeAttributes) => {
 			const field: Field | undefined = Object.values(props.fields).find(

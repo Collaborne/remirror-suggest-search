@@ -6,7 +6,7 @@ import { PiTextAlignLeft } from 'react-icons/pi';
 import { EMPTY_NODE, RemirrorJSON } from 'remirror';
 import { NamedMentionAtomNodeAttributes } from 'remirror/dist-types/extensions';
 
-import useRenderMention from './hooks/useRenderMention';
+import { useRenderMention } from './hooks/useRenderMention';
 import { Fields, MentionHandler, TextHandler } from './types';
 import {
 	searchToStaticRemirror,
