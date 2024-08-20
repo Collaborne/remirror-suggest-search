@@ -1,12 +1,12 @@
 {
 	"name": "@collaborne/remirror-suggest-search",
 	"description": "Extension and tools to create a remirror suggest search",
-	"version": "0.0.7",
-  "author": "Collaborne",
-  "license": "UNLICENSED",
-  "repository": "Collaborne/remirror-suggest-search",
-  "main": "dist/index.js",
-  "source": "src/index.ts",
+	"version": "0.0.8",
+	"author": "Collaborne",
+	"license": "UNLICENSED",
+	"repository": "Collaborne/remirror-suggest-search",
+	"main": "dist/index.js",
+	"source": "src/index.ts",
 	"engines": {
 		"npm": ">=8.3.0",
 		"node": ">=10"
