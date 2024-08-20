@@ -38,7 +38,6 @@ const useStyles = makeStyles()(theme => ({
 	},
 	searchBox: {
 		padding: theme.spacing(1),
-		width: '100%',
 	},
 	footer: {
 		padding: theme.spacing(2),

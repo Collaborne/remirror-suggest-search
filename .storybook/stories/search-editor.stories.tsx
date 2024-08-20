@@ -13,7 +13,7 @@ import {
 
 import { Story } from './utils/doc';
 import { TAGS, USERS, useEditorMention } from './utils/hooks/useEditorMention';
-import { promiseAction } from './utils/promiseAction';
+import { GetSuggestions } from '../../src/types';
 
 export default {
 	title: 'Editors / Search Editor',
@@ -39,6 +39,24 @@ const Template: Story<SearchEditorStoryArgs> = (
 		userOptions,
 	} = useEditorMention();
 
+	const getSuggestions: GetSuggestions = async props => {
+		action('getSuggestions')(props);
+		const { input } = props;
+		const suggestedItems = [...dateOptions, ...tagOptions, ...userOptions];
+
+		if (!input) {
+			return [];
+		}
+
+		const lowerCaseInput = input.toLowerCase();
+
+		const filteredSuggestedItem = suggestedItems.filter(item => {
+			const lowerCaseItem = item.label.toLowerCase();
+			return lowerCaseItem.includes(lowerCaseInput);
+		});
+
+		return filteredSuggestedItem;
+	};
 	const editorRef = useRef<SearchImperativeRef>(null);
 
 	const defaultGetExtraAttrs =
@@ -83,7 +101,7 @@ const Template: Story<SearchEditorStoryArgs> = (
 				fields={fields}
 				innerRef={editorRef}
 				onSubmit={action('onSubmit')}
-				getSuggestions={promiseAction('getSuggestions')}
+				getSuggestions={getSuggestions}
 				{...props}
 			/>
 

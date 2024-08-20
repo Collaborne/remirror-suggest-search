@@ -12,9 +12,6 @@ import { SuggesterSkeleton } from './SuggesterSkeleton';
 import { Fields } from './types';
 
 const useStyles = makeStyles()(theme => ({
-	fullWidth: {
-		width: '100%',
-	},
 	highlighted: {
 		backgroundColor: theme.palette.action.selected,
 	},
@@ -56,7 +53,6 @@ const useStyles = makeStyles()(theme => ({
 	},
 	suggester: {
 		position: 'relative',
-		width: '100%',
 		maxHeight: theme.spacing(40),
 		borderTop: `${theme.spacing(0.125)} solid ${theme.palette.divider}`,
 		overflow: 'auto',
