@@ -6,18 +6,18 @@ import { CommandsExtension, isDocNodeEmpty } from 'remirror';
 import { NamedMentionExtensionAttributes } from 'remirror/extensions';
 
 import { useSuggesterNavigation } from '../search-editor/hooks/useSuggesterNavigation';
-import { GetSuggestions } from '../types';
 
 import { useCanShowSuggestions } from './hooks/useCanShowSuggestions';
 import { useRenderOption } from './hooks/useRenderOption';
 import { useRenderSelectOptions } from './hooks/useRenderSelectOption';
 import useSuggestInput from './hooks/useSuggestInput';
-import { MentionSuggester } from './MentionSuggester';
-import { Fields, INPUT_OPTION } from './types';
+import { MentionSuggester, MentionSuggesterProps } from './MentionSuggester';
+import { Fields, GetSuggestions, INPUT_OPTION } from './types';
 
 const GET_SUGGESTIONS_DEBOUNCE_MS = 300;
 
-export interface SuggesterComponentProps {
+export interface SuggesterComponentProps
+	extends Pick<MentionSuggesterProps, 'optionLabel' | 'selectLabel'> {
 	isActive: boolean;
 	fields: Fields;
 	closeMenu: (doc: Node) => void;
@@ -29,6 +29,8 @@ export function SuggesterComponent({
 	fields,
 	closeMenu,
 	getSuggestions,
+	optionLabel,
+	selectLabel,
 }: SuggesterComponentProps) {
 	const { getState, commands } = useRemirrorContext<CommandsExtension>({
 		autoUpdate: true,
@@ -140,10 +142,11 @@ export function SuggesterComponent({
 	return (
 		<MentionSuggester
 			options={suggestedItems || []}
-			fields={fields}
 			renderOption={renderOption}
 			renderSelectOption={renderSelectOption}
 			isLoadingSuggestions={isLoading}
+			optionLabel={optionLabel}
+			selectLabel={selectLabel}
 			{...menu}
 		/>
 	);

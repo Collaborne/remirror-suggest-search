@@ -1,6 +1,6 @@
 {
-	"name": "@collaborne/remirror-search-editor",
-	"description": "Search editor with suggesters build with Remirror",
+	"name": "@collaborne/remirror-suggest-search",
+	"description": "Extension and tools to create a remirror suggest search",
 	"version": "0.0.2",
 	"type": "module",
 	"engines": {
@@ -46,7 +46,6 @@
 		"ts-jest": "^29.2.4"
 	},
 	"devDependencies": {
-		"npm-run-all": "^4.1.5",
 		"@collaborne/github-badges": "^0.0.3",
 		"@emotion/react": "^11.10.5",
 		"@emotion/styled": "^11.10.5",
@@ -93,6 +92,7 @@
 		"jest-extended": "^2.0.0",
 		"jest-remirror": "^2.0.0",
 		"mkdirp": "^1.0.4",
+		"npm-run-all": "^4.1.5",
 		"prettier": "^2.7.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",

@@ -31,6 +31,7 @@ import {
 	replaceText,
 	ShouldSkipProps,
 	Static,
+	KeyBindings,
 } from '@remirror/core';
 import type { CommandFunction } from '@remirror/core';
 import type { CreateEventHandlers } from '@remirror/extension-events';
@@ -632,6 +633,17 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 		const value = removeMark({ type: this.type, expand: true, range });
 
 		return value;
+	}
+
+	/**
+	 * Injects the baseKeymap into the editor.
+	 */
+	public createKeymap(): KeyBindings {
+		return {
+			Enter() {
+				return true;
+			},
+		};
 	}
 
 	/**

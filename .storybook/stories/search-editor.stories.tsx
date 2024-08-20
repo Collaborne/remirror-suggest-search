@@ -4,16 +4,15 @@ import { useRef } from 'react';
 import { PiCalendarBlank, PiTag } from 'react-icons/pi';
 import { NamedMentionAtomNodeAttributes } from 'remirror/extensions';
 
-import { Fields, SearchImperativeRef } from '../../src';
+import { Fields, GetSuggestions, SearchImperativeRef } from '../../src';
 import { MentionSuggester } from '../../src/search-editor/MentionSuggester';
 import {
 	SearchEditor,
 	SearchEditorProps,
-} from '../../src/search-editor/SearchEditor';
+} from './components/SearchEditor';
 
-import { Story } from './utils/doc';
-import { TAGS, USERS, useEditorMention } from './utils/hooks/useEditorMention';
-import { GetSuggestions } from '../../src/types';
+import { TAGS, USERS, useEditorMention } from './hooks/useEditorMention';
+import { StoryFn } from '@storybook/react/*';
 
 export default {
 	title: 'Editors / Search Editor',
@@ -27,7 +26,7 @@ type SearchEditorStoryArgs = Pick<
 	'initialSearchQuery' | 'disabledSearch' | 'menuFooter' | 'fixedFooter'
 >;
 
-const Template: Story<SearchEditorStoryArgs> = (
+const Template: StoryFn<SearchEditorStoryArgs> = (
 	props: SearchEditorStoryArgs,
 ) => {
 	const {
@@ -117,26 +116,26 @@ const Template: Story<SearchEditorStoryArgs> = (
 	);
 };
 
-export const Basic: Story<SearchEditorStoryArgs> = Template.bind({});
+export const Basic: StoryFn<SearchEditorStoryArgs> = Template.bind({});
 Basic.args = {};
 
-export const Filled: Story<SearchEditorStoryArgs> = Template.bind({});
+export const Filled: StoryFn<SearchEditorStoryArgs> = Template.bind({});
 Filled.args = {
 	initialSearchQuery: SEARCH_QUERY,
 };
 
-export const Disabled: Story<SearchEditorStoryArgs> = Template.bind({});
+export const Disabled: StoryFn<SearchEditorStoryArgs> = Template.bind({});
 Disabled.args = {
 	initialSearchQuery: SEARCH_QUERY,
 	disabledSearch: true,
 };
 
-export const FixedFooter: Story<SearchEditorStoryArgs> = Template.bind({});
+export const FixedFooter: StoryFn<SearchEditorStoryArgs> = Template.bind({});
 FixedFooter.args = {
 	fixedFooter: <div style={{ textAlign: 'center' }}>Fixed Footer</div>,
 };
 
-export const MenuFooter: Story<SearchEditorStoryArgs> = Template.bind({});
+export const MenuFooter: StoryFn<SearchEditorStoryArgs> = Template.bind({});
 MenuFooter.args = {
 	menuFooter: <div style={{ textAlign: 'center' }}>Menu Footer</div>,
 };
@@ -146,13 +145,14 @@ export const Loading = () => {
 		<MentionSuggester
 			isLoadingSuggestions
 			options={[]}
-			fields={{}}
 			renderOption={() => null}
 			renderSelectOption={() => null}
 			getItemProps={() => ({} as any)}
 			indexIsHovered={() => false}
 			indexIsSelected={() => false}
 			getMenuProps={() => ({} as any)}
+			optionLabel=''
+			selectLabel=''
 		/>
 	);
 };

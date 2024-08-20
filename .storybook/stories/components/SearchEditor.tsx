@@ -6,15 +6,15 @@ import {
 } from 'remirror';
 import { makeStyles } from 'tss-react/mui';
 
-import useActiveMenu from './hooks/useActiveMenu';
-import SearchEditorInput from './SearchEditorInput';
+import useActiveMenu from '../../../src/search-editor/hooks/useActiveMenu';
+import { SearchEditorComponent } from './SearchEditorComponent';
 import {
 	SearchEditorProvider,
 	SearchEditorProviderProps,
 } from './SearchEditorProvider';
-import { SuggesterComponent } from './SuggesterComponent';
-import { GetSuggestions } from './types';
-import { remirrorToSearch } from './utils/remirror-to-search';
+import { SuggesterComponent } from '../../../src/search-editor/SuggesterComponent';
+import { GetSuggestions } from '../../../src/search-editor/types';
+import { remirrorToSearch } from '../../../src/search-editor/utils/remirror-to-search';
 
 const useStyles = makeStyles()(theme => ({
 	root: {
@@ -35,6 +35,25 @@ const useStyles = makeStyles()(theme => ({
 	},
 	activeContainer: {
 		boxShadow: theme.palette.background.default,
+	},
+	editorInputRoot: {
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+		gap: theme.spacing(0.5),
+		alignSelf: 'stretch',
+		paddingRight: theme.spacing(0.625),
+		maxHeight: theme.spacing(3),
+	},
+	editorWrapper: {
+		display: 'flex',
+		alignItems: 'flex-start',
+		alignContent: 'center',
+		gap: theme.spacing(0.75),
+		flex: '1 0 0',
+		flexWrap: 'wrap',
+		width: '100%',
+		overflow: 'hidden',
 	},
 	searchBox: {
 		padding: theme.spacing(1),
@@ -158,17 +177,17 @@ export function SearchEditor({
 			<div ref={rootRef} className={cx(classes.root, classesProps?.root)}>
 				<div className={containerClassName}>
 					<div className={cx(classes.searchBox, classesProps?.searchBox)}>
-						<SearchEditorInput
-							disabledSearch={disabledSearch}
-							isActive={isActive}
-							closeMenu={closeMenu}
-						/>
+						<div className={classes.editorInputRoot}>
+							<SearchEditorComponent className={classes.editorWrapper} />
+						</div>
 					</div>
 					<SuggesterComponent
 						fields={fields}
 						isActive={isActive}
 						closeMenu={closeMenu}
 						getSuggestions={getSuggestions}
+						optionLabel="search"
+						selectLabel="select"
 					/>
 					{showMenuFooter && <div className={classes.footer}>{menuFooter}</div>}
 					{fixedFooter && <div className={classes.footer}>{fixedFooter}</div>}

@@ -11,13 +11,13 @@ import { makeStyles } from 'tss-react/mui';
 
 import { useSearchExtension } from '../hooks/useSearchExtensions';
 
-import { useInitializeDoc } from './hooks/useInitializeDoc';
+import { useInitializeDoc } from '../../../src/search-editor/hooks/useInitializeDoc';
 import {
 	SearchImperativeRef,
 	SearchImperativeHandle,
-} from './SearchImperativeHandle';
-import { Fields } from './types';
-import { searchToRemirror } from './utils/search-to-remirror';
+} from '../../../src/search-editor/SearchImperativeHandle';
+import { Fields } from '../../../src/search-editor/types';
+import { searchToRemirror } from '../../../src/search-editor/utils/search-to-remirror';
 
 const useStyles = makeStyles()(theme => {
 	return {

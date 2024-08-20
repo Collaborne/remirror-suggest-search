@@ -2,13 +2,13 @@ import { JSX } from 'react/jsx-runtime';
 
 import { Fields, StaticSearchEditor, StaticSearchEditorProps } from '../../src';
 
-import { Story } from './utils/doc';
 import {
 	SOURCES,
 	TAGS,
 	USERS,
 	useEditorMention,
-} from './utils/hooks/useEditorMention';
+} from './hooks/useEditorMention';
+import { StoryFn } from '@storybook/react/*';
 
 export default {
 	title: 'Editors / Static Search Editor',
@@ -17,7 +17,7 @@ export default {
 
 const SEARCH_QUERY = `list:item1,item2,item3 user:${USERS[0].id} tag:${TAGS[0].id} source:${SOURCES[0].id} ger`;
 
-const Template: Story<Omit<StaticSearchEditorProps, 'fields'>> = (
+const Template: StoryFn<Omit<StaticSearchEditorProps, 'fields'>> = (
 	props: JSX.IntrinsicAttributes & Omit<StaticSearchEditorProps, 'fields'>,
 ) => {
 	const { renderSource, renderUser, renderTag, renderDate } =

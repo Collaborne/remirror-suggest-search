@@ -9,7 +9,6 @@ import { makeStyles } from 'tss-react/mui';
 
 import { isSelectOption } from './hooks/useRenderSelectOption';
 import { SuggesterSkeleton } from './SuggesterSkeleton';
-import { Fields } from './types';
 
 const useStyles = makeStyles()(theme => ({
 	highlighted: {
@@ -66,12 +65,13 @@ export interface MentionSuggesterProps
 		'getItemProps' | 'indexIsHovered' | 'indexIsSelected' | 'getMenuProps'
 	> {
 	options: NamedMentionAtomNodeAttributes[];
-	fields: Fields;
 	renderOption: (option: NamedMentionAtomNodeAttributes) => JSX.Element | null;
 	renderSelectOption: (
 		attrs: NamedMentionAtomNodeAttributes,
 	) => JSX.Element | null;
 	isLoadingSuggestions?: boolean;
+	optionLabel: string;
+	selectLabel: string;
 }
 
 export function MentionSuggester({
@@ -83,6 +83,8 @@ export function MentionSuggester({
 	renderOption,
 	renderSelectOption,
 	isLoadingSuggestions,
+	optionLabel,
+	selectLabel,
 }: MentionSuggesterProps): JSX.Element | null {
 	const { classes, cx } = useStyles();
 
@@ -140,7 +142,7 @@ export function MentionSuggester({
 							<div className={classes.optionWrapper}>{optionComponent}</div>
 							<ListItemIcon className={classes.menuIconEnd}>
 								<Typography variant="caption" className={classes.optionEndIcon}>
-									{!isSelect ? 'search' : 'select'}
+									{!isSelect ? optionLabel : selectLabel}
 								</Typography>
 							</ListItemIcon>
 						</MenuItem>

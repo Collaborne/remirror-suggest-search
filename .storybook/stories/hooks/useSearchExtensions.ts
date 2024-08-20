@@ -3,12 +3,11 @@ import { useMemo } from 'react';
 import { SchemaAttributes, Static } from 'remirror';
 import { ParagraphExtension, PlaceholderExtension } from 'remirror/extensions';
 
-import { CustomKeymapExtension } from '../extensions/custom-keymap-extension';
 import {
 	MentionExtension,
 	MentionExtensionMatcher,
-} from '../extensions/mention-extension';
-import { Fields } from '../search-editor/types';
+} from '../../../src/extensions/mention-extension';
+import { Fields } from '../../../src/search-editor/types';
 
 import { useDeepCompareMemoize } from './useDeepCompare';
 
@@ -61,7 +60,6 @@ export function createSearchExtensions(params: UseSearchExtensionProps) {
 	const extraAttributes = getExtraAttributesFromFields(params.fields);
 
 	const extensions = [
-		new CustomKeymapExtension(),
 		new ParagraphExtension(),
 		new PlaceholderExtension({
 			emptyNodeClass: params.emptyNodeClass,

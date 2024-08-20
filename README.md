@@ -1,13 +1,13 @@
-# remirror-search-editor
+# remirror-suggest-search
 
 Search editor with suggestions build with Remirror
 
-[Live demo](https://collaborne.github.io/remirror-search-editor/)
+[Live demo](https://collaborne.github.io/remirror-suggest-search/)
 
 ## Install
 
 ```bash
-npm install --save @collaborne/remirror-search-editor
+npm install --save @collaborne/remirror-suggest-search
 ```
 
 ## Development
