@@ -1,7 +1,7 @@
 {
 	"name": "@collaborne/remirror-search-editor",
 	"description": "Search editor with suggesters build with Remirror",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"type": "module",
 	"engines": {
 		"npm": ">=8.3.0",
