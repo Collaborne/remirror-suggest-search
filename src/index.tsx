@@ -16,3 +16,15 @@ export type {
 	TextHandler,
 	RenderField,
 } from './search-editor/types';
+
+export { MentionExtension } from './extensions/mention-extension';
+export type {
+	MentionChangeHandler,
+	MentionChangeHandlerCommand,
+	MentionChangeHandlerCommandAttributes,
+	MentionChangeHandlerProps,
+	MentionExtensionAttributes,
+	MentionExtensionMatcher,
+	MentionOptions,
+	NamedMentionExtensionAttributes,
+} from './extensions/mention-extension';
