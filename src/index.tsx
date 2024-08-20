@@ -33,3 +33,4 @@ export type {
 	MentionOptions,
 	NamedMentionExtensionAttributes,
 } from './extensions/mention-extension';
+export { INPUT_OPTION } from './search-editor/types';
