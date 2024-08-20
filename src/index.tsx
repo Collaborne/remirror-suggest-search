@@ -7,7 +7,11 @@ export { MentionSuggester } from './search-editor/MentionSuggester';
 export type { SuggesterComponentProps } from './search-editor/SuggesterComponent';
 export { SuggesterComponent } from './search-editor/SuggesterComponent';
 export { SuggesterSkeleton } from './search-editor/SuggesterSkeleton';
-export type { SearchImperativeRef } from './search-editor/SearchImperativeHandle';
+export type {
+	SearchImperativeRef,
+	SearchEditorImperativeProps,
+} from './search-editor/SearchImperativeHandle';
+export type { SearchImperativeHandle } from './search-editor/SearchImperativeHandle';
 export type {
 	FieldType,
 	Field,
