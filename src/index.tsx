@@ -11,7 +11,7 @@ export type {
 	SearchImperativeRef,
 	SearchEditorImperativeProps,
 } from './search-editor/SearchImperativeHandle';
-export type { SearchImperativeHandle } from './search-editor/SearchImperativeHandle';
+export { SearchImperativeHandle } from './search-editor/SearchImperativeHandle';
 export type {
 	FieldType,
 	Field,
