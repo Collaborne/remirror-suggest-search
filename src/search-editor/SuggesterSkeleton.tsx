@@ -9,10 +9,10 @@ const useStyles = makeStyles()(theme => ({
 		gap: theme.spacing(0.75),
 	},
 	icon: {
-		borderRadius: theme.shape.borderRadiusSmall,
+		borderRadius: theme.shape.borderRadius,
 	},
 	text: {
-		borderRadius: theme.shape.borderRadiusTiny,
+		borderRadius: theme.shape.borderRadius,
 	},
 }));
 
