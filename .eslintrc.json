@@ -3,10 +3,13 @@
 
 	"overrides": [
 		{
-			"files": ["**/*.ts", "**/*.tsx"],
+			"files": [
+				"**/*.ts",
+				"**/*.tsx"
+			],
 
 			"extends": [
-				"standard-react",
+				"standard",
 				"plugin:prettier/recommended",
 				"collaborne"
 			],
@@ -20,7 +23,9 @@
 					"version": "17"
 				}
 			},
-			"plugins": ["react-hooks"],
+			"plugins": [
+				"react-hooks"
+			],
 			"rules": {
 				"react/prop-types": "off",
 				"react/jsx-handler-names": "off",
@@ -30,23 +35,21 @@
 				"react/react-in-jsx-scope": "off",
 				"react-hooks/rules-of-hooks": "error",
 				"react-hooks/exhaustive-deps": "warn",
-				"camelcase": "warn",
-				"@typescript-eslint/naming-convention": [
-					"error",
-					{
-						"selector": "function",
-						"format": ["PascalCase", "camelCase"]
-					}
-				]
+				"camelcase": "warn"
 			}
 		},
 		{
 			"files": "src/**/*.spec.ts",
 
-			"extends": ["plugin:jest/recommended"]
+			"extends": [
+				"plugin:jest/recommended"
+			]
 		},
 		{
-			"files": [".storybook/**/*.ts", ".storybook/**/*.tsx"],
+			"files": [
+				".storybook/**/*.ts",
+				".storybook/**/*.tsx"
+			],
 
 			"parserOptions": {
 				"project": "tsconfig.test.json"

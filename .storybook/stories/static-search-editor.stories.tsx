@@ -31,12 +31,26 @@ const Template: StoryFn<Omit<StaticSearchEditorProps, 'fields'>> = (
 		},
 		tag: {
 			type: 'keyword',
-			name: 'hash',
+			name: 'tag',
 			render: renderTag,
+			getExtraAttrs: async (id: string) => {
+				const tag = TAGS.find(tag => tag.id === id);
+
+				if (!tag) {
+					return;
+				}
+
+				return {
+					id: tag.id,
+					label: tag.name,
+					name: 'tag',
+					color: tag.color,
+				};
+			},
 		},
 		date: {
 			type: 'range',
-			name: 'range',
+			name: 'date',
 			render: renderDate,
 		},
 		creator: {
@@ -46,7 +60,7 @@ const Template: StoryFn<Omit<StaticSearchEditorProps, 'fields'>> = (
 		},
 		source: {
 			type: 'keyword',
-			name: 'slash',
+			name: 'source',
 			render: renderSource,
 		},
 	};

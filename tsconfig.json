@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"outDir": "dist",
 		"module": "esnext",
-		"lib": ["dom", "esnext"],
+		"lib": ["dom", "dom.iterable", "esnext"],
 		"moduleResolution": "node",
 		"jsx": "react-jsx",
 		"sourceMap": true,
@@ -25,13 +25,9 @@
 		"experimentalDecorators": true,
 		"noEmit": true,
 		"noFallthroughCasesInSwitch": true,
-		"downlevelIteration": true
+		"downlevelIteration": true,
+		"emitDecoratorMetadata": true
 	},
-	"include": [
-		"src/**/*",
-		"tasks/**/*",
-		".storybook/**/*",
-		"vite.config.ts"
-	],
+	"include": ["src/**/*", "tasks/**/*", ".storybook/**/*", "vite.config.ts"],
 	"exclude": ["node_modules/**/*", "dist/**/*", ".yalc/**/*"]
 }
