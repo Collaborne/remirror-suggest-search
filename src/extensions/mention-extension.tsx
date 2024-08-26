@@ -646,6 +646,7 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 	 */
 	public createKeymap(): KeyBindings {
 		return {
+			// eslint-disable-next-line @typescript-eslint/naming-convention
 			Enter() {
 				return true;
 			},
