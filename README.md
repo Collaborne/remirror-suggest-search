@@ -20,4 +20,4 @@ npm run storybook
 
 ## License
 
-(c) 2024 Collaborne B.V. All rights reserved.
+Apache-2.0 © [Collaborne](https://github.com/Collaborne)
