@@ -43,7 +43,8 @@
 		"remirror": "^2.0.39",
 		"rollup": "^4.21.0",
 		"search-query-parser": "^1.6.0",
-		"ts-jest": "^29.2.4"
+		"ts-jest": "^29.2.4",
+		"tsc-watch": "^6.2.0"
 	},
 	"devDependencies": {
 		"@emotion/react": "^11.10.5",

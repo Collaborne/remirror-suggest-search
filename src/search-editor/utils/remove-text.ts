@@ -1,5 +1,10 @@
+const SPECIAL_CHARACTERS_REGEX = /[.*+?^${}()|[\]\\]/g;
+const GLOBAL_FLAG = 'g';
+
+function escapeRegExp(text: string): string {
+	return text.replace(SPECIAL_CHARACTERS_REGEX, '\\$&');
+}
+
 export function removeText(input: string, textToRemove: string): string {
-	// Use the replace method with a global regular expression to remove all occurrences
-	const regex = new RegExp(`${textToRemove}$`);
-	return input.replace(regex, '');
+	return input.replace(new RegExp(escapeRegExp(textToRemove), GLOBAL_FLAG), '');
 }
