@@ -30,11 +30,8 @@ function startsWithWhitespace(resolvedPos: ResolvedPos): boolean {
 	return false;
 }
 
-export function useCanShowSuggestions(props: {
-	$anchor: ResolvedPos;
-	isTriggeredSuggester: boolean;
-}) {
-	const { $anchor, isTriggeredSuggester } = props;
+export function useCanShowSuggestions(props: { $anchor: ResolvedPos }) {
+	const { $anchor } = props;
 	const canShowSuggestions = useMemo(() => {
 		const isValidPosition = cursorWithinLastNode($anchor);
 		const isValidText = startsWithWhitespace($anchor);
@@ -42,10 +39,9 @@ export function useCanShowSuggestions(props: {
 		return (
 			isDocNodeEmpty($anchor.doc) ||
 			isSingleTextChild($anchor) ||
-			isTriggeredSuggester ||
 			(isValidPosition && isValidText)
 		);
-	}, [$anchor, isTriggeredSuggester]);
+	}, [$anchor]);
 
 	return canShowSuggestions;
 }

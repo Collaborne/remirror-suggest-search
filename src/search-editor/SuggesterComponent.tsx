@@ -82,7 +82,6 @@ export function SuggesterComponent({
 
 	const canShowSuggestions = useCanShowSuggestions({
 		$anchor,
-		isTriggeredSuggester: !!state,
 	});
 
 	const fetchSuggestions = useCallback(async () => {
