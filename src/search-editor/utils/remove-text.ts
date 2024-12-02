@@ -6,5 +6,8 @@ function escapeRegExp(text: string): string {
 }
 
 export function removeText(input: string, textToRemove: string): string {
-	return input.replace(new RegExp(escapeRegExp(textToRemove), GLOBAL_FLAG), '');
+	return input.replace(
+		new RegExp(escapeRegExp(textToRemove?.trim()), GLOBAL_FLAG),
+		'',
+	);
 }
