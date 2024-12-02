@@ -1,7 +1,7 @@
 {
 	"name": "@collaborne/remirror-suggest-search",
 	"description": "Extension and tools to create a remirror suggest search",
-	"version": "0.1.3",
+	"version": "0.1.4",
 	"author": "Collaborne - Idriss Mahjoubi",
 	"license": "UNLICENSED",
 	"repository": "Collaborne/remirror-suggest-search",
