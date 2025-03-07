@@ -1,7 +1,13 @@
 import { Tooltip, Chip } from '@mui/material';
 import { Doc, RemirrorRenderer } from '@remirror/react-renderer';
 import type { MarkMap } from '@remirror/react-renderer';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import {
+	MouseEventHandler,
+	useCallback,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react';
 import { PiTextAlignLeft } from 'react-icons/pi';
 import { EMPTY_NODE, RemirrorJSON } from 'remirror';
 import { NamedMentionAtomNodeAttributes } from 'remirror/dist-types/extensions';
@@ -33,6 +39,8 @@ const Text: TextHandler = ({ node }) => {
 export interface StaticSearchEditorProps {
 	searchQuery?: string;
 	fields: Fields;
+	emptySearchEditor?: JSX.Element;
+	onClick?: MouseEventHandler;
 	className?: string;
 }
 export function StaticSearchEditor({
@@ -79,9 +87,14 @@ export function StaticSearchEditor({
 		};
 		return result;
 	}, [mentionAtomHandler]);
+	const hasSearch = searchQuery && searchQuery.length > 0;
+
+	if (!hasSearch && props.emptySearchEditor) {
+		return props.emptySearchEditor;
+	}
 
 	return (
-		<div className={props.className}>
+		<div className={props.className} onClick={props.onClick}>
 			<RemirrorRenderer
 				json={remirrorJson}
 				typeMap={typeMap}
