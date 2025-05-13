@@ -40,5 +40,8 @@ export function remirrorToSearch(params: RemirrorToSearchProps): string {
 		}
 	}
 
-	return searchQuery.replace(/\s+/g, ' ').trim();
+	return searchQuery
+		.replace(/\s+/g, ' ')
+		.replace(/:(\s+)/g, ':')
+		.trim();
 }
