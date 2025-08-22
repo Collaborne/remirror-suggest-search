@@ -13,6 +13,7 @@ import { useRenderSelectOptions } from './hooks/useRenderSelectOption';
 import { useSuggestInput } from './hooks/useSuggestInput';
 import { MentionSuggester, MentionSuggesterProps } from './MentionSuggester';
 import { Fields, GetSuggestions, INPUT_OPTION } from './types';
+import { prepareSuggestedItems } from './utils/prepare-suggested-items';
 
 const GET_SUGGESTIONS_DEBOUNCE_MS = 300;
 
@@ -91,11 +92,12 @@ export function SuggesterComponent({
 				input: searchInput,
 			});
 
-			const newSuggestedItems = [
-				...(inputOption || []),
-				...(options || []),
-				...selectOptions,
-			];
+			const newSuggestedItems = prepareSuggestedItems({
+				options,
+				inputOption,
+				selectOptions,
+				searchInput,
+			});
 
 			setSuggestedItems(newSuggestedItems);
 			setIsLoading(false);
