@@ -42,7 +42,7 @@ export interface SearchEditorImperativeProps {
 function InnerSearchImperativeHandle(
 	{ onSubmit }: SearchEditorImperativeProps,
 	ref: React.Ref<SearchImperativeRef>,
-): JSX.Element {
+) {
 	const { view, clearContent, commands } = useRemirrorContext<MentionExtension>(
 		{
 			autoUpdate: true,

@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, Grid } from '@mui/material';
-import { action } from '@storybook/addon-actions';
+import { action } from 'storybook/actions';
 import { useRef } from 'react';
 import { PiCalendarBlank, PiTag } from 'react-icons/pi';
 import { NamedMentionAtomNodeAttributes } from 'remirror/extensions';
@@ -12,7 +12,7 @@ import {
 } from './components/SearchEditor';
 
 import { TAGS, USERS, useEditorMention } from './hooks/useEditorMention';
-import { StoryFn } from '@storybook/react/*';
+import type { StoryFn } from '@storybook/react';
 
 export default {
 	title: 'Editors / Search Editor',

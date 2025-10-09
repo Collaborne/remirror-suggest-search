@@ -2,7 +2,7 @@ import { Divider, IconButton, ListItemIcon, Typography } from '@mui/material';
 import List from '@mui/material/List';
 import MenuItem from '@mui/material/MenuItem';
 import { UseMenuNavigationReturn } from '@remirror/react';
-import { useMemo } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { PiMagnifyingGlass, PiOption } from 'react-icons/pi';
 import { NamedMentionAtomNodeAttributes } from 'remirror/extensions';
 import { makeStyles } from 'tss-react/mui';
@@ -65,10 +65,10 @@ export interface MentionSuggesterProps
 		'getItemProps' | 'indexIsHovered' | 'indexIsSelected' | 'getMenuProps'
 	> {
 	options: NamedMentionAtomNodeAttributes[];
-	renderOption: (option: NamedMentionAtomNodeAttributes) => JSX.Element | null;
+	renderOption: (option: NamedMentionAtomNodeAttributes) => ReactElement | null;
 	renderSelectOption: (
 		attrs: NamedMentionAtomNodeAttributes,
-	) => JSX.Element | null;
+	) => ReactElement | null;
 	isLoadingSuggestions?: boolean;
 	optionLabel: string;
 	selectLabel: string;
@@ -85,7 +85,7 @@ export function MentionSuggester({
 	isLoadingSuggestions,
 	optionLabel,
 	selectLabel,
-}: MentionSuggesterProps): JSX.Element | null {
+}: MentionSuggesterProps) {
 	const { classes, cx } = useStyles();
 
 	// Divider is shown at the index of the first static option

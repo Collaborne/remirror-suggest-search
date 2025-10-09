@@ -1,5 +1,5 @@
 import { Chip } from '@mui/material';
-import { useCallback, useMemo } from 'react';
+import { ReactElement, useCallback, useMemo } from 'react';
 import { CSSProperties } from 'remirror';
 import { NamedMentionExtensionAttributes } from 'remirror/extensions';
 import { makeStyles } from 'tss-react/mui';
@@ -41,7 +41,7 @@ export function useRenderSelectOptions(props: {
 	}, [props.fields, props.hideSelectOptions]);
 
 	const renderSelectOption = useCallback(
-		(attrs: NamedMentionExtensionAttributes): JSX.Element | null => {
+		(attrs: NamedMentionExtensionAttributes): ReactElement | null => {
 			if (!attrs) {
 				return null;
 			}

@@ -1,12 +1,12 @@
 import { MarkMap } from '@remirror/react';
-import { FC } from 'react';
+import { FC, ReactElement } from 'react';
 import { RemirrorJSON, SchemaAttributes, Static } from 'remirror';
 import { NamedMentionExtensionAttributes } from 'remirror/extensions';
 
 export type FieldType = 'keyword' | 'range';
 export type RenderField = (
 	attrs: NamedMentionExtensionAttributes,
-) => JSX.Element | null;
+) => ReactElement | null;
 export interface Field {
 	type: FieldType;
 	name: string;
