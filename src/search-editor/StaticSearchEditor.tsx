@@ -3,6 +3,7 @@ import { Doc, RemirrorRenderer } from '@remirror/react-renderer';
 import type { MarkMap } from '@remirror/react-renderer';
 import {
 	MouseEventHandler,
+	ReactElement,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -39,7 +40,7 @@ const Text: TextHandler = ({ node }) => {
 export interface StaticSearchEditorProps {
 	searchQuery?: string;
 	fields: Fields;
-	emptySearchEditor?: JSX.Element;
+	emptySearchEditor?: ReactElement;
 	onClick?: MouseEventHandler;
 	className?: string;
 }
@@ -47,7 +48,7 @@ export function StaticSearchEditor({
 	searchQuery,
 	fields,
 	...props
-}: StaticSearchEditorProps): JSX.Element {
+}: StaticSearchEditorProps) {
 	const [remirrorJson, setRemirrorJson] = useState<RemirrorJSON>(EMPTY_NODE);
 	useEffect(() => {
 		const fetchRemirrorContent = async () => {
@@ -83,7 +84,8 @@ export function StaticSearchEditor({
 			doc: Doc,
 			[TEXT_ATOM_TYPE]: Text,
 			mentionAtom: mentionAtomHandler,
-			paragraph: 'p',
+			// Render paragraphs as div elements to avoid invalid block nesting from inline chips.
+			paragraph: 'div',
 		};
 		return result;
 	}, [mentionAtomHandler]);

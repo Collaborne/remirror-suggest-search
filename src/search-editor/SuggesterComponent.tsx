@@ -1,4 +1,4 @@
-import { useDebounceFn, usePrevious } from '@reactuses/core';
+import { useDebounceFn } from '@reactuses/core';
 import { useRemirrorContext } from '@remirror/react';
 import { Node } from 'prosemirror-model';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -8,6 +8,7 @@ import { NamedMentionExtensionAttributes } from 'remirror/extensions';
 import { useSuggesterNavigation } from '../search-editor/hooks/useSuggesterNavigation';
 
 import { useCanShowSuggestions } from './hooks/useCanShowSuggestions';
+import { usePreviousValue } from './hooks/usePreviousValue';
 import { useRenderOption } from './hooks/useRenderOption';
 import { useRenderSelectOptions } from './hooks/useRenderSelectOption';
 import { useSuggestInput } from './hooks/useSuggestInput';
@@ -47,7 +48,7 @@ export function SuggesterComponent({
 		doc,
 		fields,
 	});
-	const prevIsActive = usePrevious(isActive);
+	const prevIsActive = usePreviousValue(isActive);
 
 	const handleCloseMenu = useCallback(() => {
 		setTimeout(() => {

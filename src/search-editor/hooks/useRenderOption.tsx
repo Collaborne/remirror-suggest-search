@@ -1,6 +1,6 @@
 import { MarkMap, Doc, TextHandler, RemirrorRenderer } from '@remirror/react';
 import { Node } from 'prosemirror-model';
-import { useCallback, useMemo } from 'react';
+import { ReactElement, useCallback, useMemo } from 'react';
 import { RemirrorJSON } from 'remirror';
 import { NamedMentionAtomNodeAttributes } from 'remirror/extensions';
 import { makeStyles } from 'tss-react/mui';
@@ -34,7 +34,7 @@ function OptionStaticEditor(props: {
 	renderOptions: (
 		name: string,
 		attrs: NamedMentionAtomNodeAttributes,
-	) => JSX.Element | null;
+	) => ReactElement | null;
 }) {
 	const { doc, renderOptions } = props;
 	const { classes } = useStyles();
@@ -82,7 +82,7 @@ export function useRenderOption(props: { doc: Node; fields: Fields }) {
 	}, [fields]);
 	const renderMention = useRenderMention({ fields });
 	const renderOption = useCallback(
-		(option: NamedMentionAtomNodeAttributes): JSX.Element | null => {
+		(option: NamedMentionAtomNodeAttributes): ReactElement | null => {
 			const isInputOption = option.name === INPUT_OPTION.name;
 			const matchedText = option.matchedText as string | undefined;
 

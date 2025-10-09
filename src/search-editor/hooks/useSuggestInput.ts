@@ -1,4 +1,3 @@
-import { usePrevious } from '@reactuses/core';
 import { useState, useEffect } from 'react';
 import { ProsemirrorNode } from 'remirror';
 
@@ -11,6 +10,8 @@ import {
 	removeTextFromFront,
 } from '../utils/remove-text';
 
+import { usePreviousValue } from './usePreviousValue';
+
 export function useSuggestInput(props: {
 	doc: ProsemirrorNode;
 	fields: Fields;
@@ -18,7 +19,7 @@ export function useSuggestInput(props: {
 	const { doc, fields } = props;
 	const [searchInput, setSearchInput] = useState<string>();
 	const [searchedTerm, setSearchedTerm] = useState<string>();
-	const prevSearchInput = usePrevious(searchInput);
+	const prevSearchInput = usePreviousValue(searchInput) ?? '';
 	useEffect(() => {
 		const lastNode = getLastTextNode(doc);
 		const lastNodeText = removeExtraSpaces(getTextFromNode(lastNode) ?? '');
