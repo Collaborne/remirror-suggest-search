@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef } from 'react';
+import { JSX, useCallback, useMemo, useRef } from 'react';
 import {
 	RemirrorEventListenerProps,
 	AnyExtension,

@@ -4,7 +4,7 @@ import { isEqual } from 'remirror';
 // Taken from https://github.com/kentcdodds/use-deep-compare-effect
 type DependencyList = Parameters<typeof useMemo>[1];
 export function useDeepCompareMemoize(value: DependencyList) {
-	const ref = useRef<DependencyList>();
+	const ref = useRef<DependencyList>(null);
 	const signalRef = useRef<number>(0);
 
 	if (!isEqual(value, ref.current)) {

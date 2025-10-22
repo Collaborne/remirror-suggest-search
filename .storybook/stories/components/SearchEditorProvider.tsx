@@ -6,7 +6,7 @@ import {
 	RemirrorJSON,
 } from '@remirror/core';
 import { Remirror, useRemirror } from '@remirror/react';
-import { ReactElement, useEffect, useState } from 'react';
+import { JSX, ReactElement, useEffect, useState } from 'react';
 import { makeStyles } from 'tss-react/mui';
 
 import { useSearchExtension } from '../hooks/useSearchExtensions';
@@ -57,7 +57,7 @@ export interface SearchEditorProviderProps {
 	disabledSearch?: boolean;
 	isActive?: boolean;
 	fields: Fields;
-	innerRef?: React.RefObject<SearchImperativeRef>;
+	innerRef?: React.RefObject<SearchImperativeRef | null>;
 	onSubmit?: (doc: ProsemirrorNode) => void;
 	onFocus?: (params: RemirrorEventListenerProps<AnyExtension>) => boolean;
 	onBlur?: (

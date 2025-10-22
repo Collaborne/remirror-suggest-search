@@ -5,7 +5,7 @@ import {
 	coreStyledCss,
 	addStylesToElement,
 } from '@remirror/styles/dom';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, JSX } from 'react';
 
 const materialRemirrorStyles = css`
 	${componentsStyledCss}
