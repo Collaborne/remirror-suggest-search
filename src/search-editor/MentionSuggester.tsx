@@ -2,7 +2,7 @@ import { Divider, IconButton, ListItemIcon, Typography } from '@mui/material';
 import List from '@mui/material/List';
 import MenuItem from '@mui/material/MenuItem';
 import { UseMenuNavigationReturn } from '@remirror/react';
-import { ReactElement, useMemo } from 'react';
+import { MouseEventHandler, ReactElement, useCallback, useMemo } from 'react';
 import { PiMagnifyingGlass, PiOption } from 'react-icons/pi';
 import { NamedMentionAtomNodeAttributes } from 'remirror/extensions';
 import { makeStyles } from 'tss-react/mui';
@@ -105,6 +105,18 @@ export function MentionSuggester({
 		);
 	}, [classes.menuItem]);
 
+	const withPreventDefault = useCallback(
+		(onMouseDown: MouseEventHandler<HTMLLIElement> | undefined) => {
+			const handler: MouseEventHandler<HTMLLIElement> = event => {
+				// Safari directly reopens the suggester otherwise
+				event.preventDefault();
+				onMouseDown?.(event);
+			};
+			return handler;
+		},
+		[],
+	);
+
 	return (
 		<List className={classes.suggester} {...getMenuProps()}>
 			{options.map((option, index) => {
@@ -117,6 +129,13 @@ export function MentionSuggester({
 					? renderOption(option)
 					: renderSelectOption(option);
 
+				const menuItemProps = getItemProps<HTMLLIElement>({
+					item: option,
+					index,
+				});
+				const { onMouseDown, ...restMenuItemProps } = menuItemProps;
+				const handleMouseDown = withPreventDefault(onMouseDown);
+
 				return (
 					<div key={`${option.id}_${index}`}>
 						{showDivider && <Divider />}
@@ -125,10 +144,8 @@ export function MentionSuggester({
 								[classes.highlighted]: isHighlighted,
 								[classes.hovered]: isHovered,
 							})}
-							{...getItemProps<HTMLLIElement>({
-								item: option,
-								index,
-							})}
+							{...restMenuItemProps}
+							onMouseDown={handleMouseDown}
 						>
 							<ListItemIcon>
 								<IconButton
