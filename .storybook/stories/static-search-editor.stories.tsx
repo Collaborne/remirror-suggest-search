@@ -9,6 +9,8 @@ import {
 	useEditorMention,
 } from './hooks/useEditorMention';
 import { StoryFn } from '@storybook/react/*';
+import { sleep } from './utils/sleep';
+import { useMemo } from 'react';
 
 export default {
 	title: 'Editors / Static Search Editor',
@@ -23,7 +25,7 @@ const Template: StoryFn<Omit<StaticSearchEditorProps, 'fields'>> = (
 	const { renderSource, renderUser, renderTag, renderDate } =
 		useEditorMention();
 
-	const fields: Fields = {
+	const fields: Fields = useMemo(() => ({
 		list: {
 			type: 'keyword',
 			name: 'list',
@@ -34,6 +36,8 @@ const Template: StoryFn<Omit<StaticSearchEditorProps, 'fields'>> = (
 			name: 'tag',
 			render: renderTag,
 			getExtraAttrs: async (id: string) => {
+				// Simulate loading
+				await sleep(200);
 				const tag = TAGS.find(tag => tag.id === id);
 
 				if (!tag) {
@@ -63,7 +67,7 @@ const Template: StoryFn<Omit<StaticSearchEditorProps, 'fields'>> = (
 			name: 'source',
 			render: renderSource,
 		},
-	};
+	}), [renderSource, renderUser, renderTag, renderDate]);
 
 	return (
 		<div>

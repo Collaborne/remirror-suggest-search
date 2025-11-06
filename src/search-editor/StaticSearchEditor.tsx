@@ -71,10 +71,11 @@ export function StaticSearchEditor({
 				return null;
 			}
 
-			return renderMention(
+			const rendered = renderMention(
 				node.attrs.name as string,
 				node.attrs as NamedMentionAtomNodeAttributes,
 			);
+			return rendered;
 		},
 		[renderMention],
 	);
