@@ -174,4 +174,57 @@ describe('search-to-remirror', () => {
 			],
 		});
 	});
+
+	it('falls back to id when mention label is empty', async () => {
+		const fieldsWithEmptyLabel: Fields = {
+			...FIELDS,
+			label: {
+				...FIELDS.label,
+				getExtraAttrs: async (id: string) => {
+					if (!id) {
+						return;
+					}
+					return { id, label: '', name: 'label' };
+				},
+			},
+		};
+
+		const actual = await searchToRemirror({
+			searchQuery: 'label:___label#label1',
+			fields: fieldsWithEmptyLabel,
+		});
+
+		expect(actual).toEqual({
+			type: 'doc',
+			content: [
+				{
+					type: 'paragraph',
+					content: [
+						{
+							text: 'label:',
+							type: 'text',
+						},
+						{
+							marks: [
+								{
+									attrs: {
+										id: '___label#label1',
+										label: '',
+										name: 'label',
+									},
+									type: 'mention',
+								},
+							],
+							text: '___label#label1',
+							type: 'text',
+						},
+						{
+							text: ' ',
+							type: 'text',
+						},
+					],
+				},
+			],
+		});
+	});
 });
