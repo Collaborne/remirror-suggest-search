@@ -51,6 +51,10 @@ function createMentionMarkJSON(
 	if (!attrs) {
 		return [];
 	}
+
+	// ProseMirror rejects empty text nodes. Fall back to id when label is empty.
+	const mentionText = `${attrs.label ?? ''}` || `${attrs.id ?? ''}`;
+
 	return [
 		{
 			type: 'text',
@@ -58,7 +62,7 @@ function createMentionMarkJSON(
 		},
 		{
 			type: 'text',
-			text: String(attrs.label),
+			text: mentionText,
 			marks: [
 				{
 					type: 'mention',
