@@ -20,7 +20,7 @@ export function prepareSuggestedItems(params: {
 		matchedText: searchInput,
 	}));
 
-	const includeInput = mappedOptions.length > 0 ? [] : inputOption ?? [];
+	const includeInput = mappedOptions.length > 0 ? [] : (inputOption ?? []);
 
 	return [...includeInput, ...mappedOptions, ...selectOptions];
 }

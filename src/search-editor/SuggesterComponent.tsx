@@ -18,8 +18,10 @@ import { prepareSuggestedItems } from './utils/prepare-suggested-items';
 
 const GET_SUGGESTIONS_DEBOUNCE_MS = 300;
 
-export interface SuggesterComponentProps
-	extends Pick<MentionSuggesterProps, 'optionLabel' | 'selectLabel'> {
+export interface SuggesterComponentProps extends Pick<
+	MentionSuggesterProps,
+	'optionLabel' | 'selectLabel'
+> {
 	isActive: boolean;
 	fields: Fields;
 	closeMenu: (doc: Node) => void;
