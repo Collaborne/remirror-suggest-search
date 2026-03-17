@@ -1,11 +1,15 @@
+import { InputRulesExtension } from '@remirror/core';
 import { renderEditor } from 'jest-remirror';
 
 import { MentionExtension } from '../../../extensions/mention-extension';
 
-export function setupEditor() {
+export function setupEditor(): ReturnType<typeof renderEditor> {
+	const mentionExtension = new MentionExtension({
+		matchers: [],
+	});
+
 	return renderEditor([
-		new MentionExtension({
-			matchers: [],
-		}),
-	]);
+		new InputRulesExtension({}),
+		mentionExtension,
+	] as unknown as Parameters<typeof renderEditor>[0]);
 }

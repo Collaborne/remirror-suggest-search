@@ -4,7 +4,6 @@
 // TODO: open PR in remirror from these changes
 import {
 	ApplySchemaAttributes,
-	command,
 	ErrorConstant,
 	extension,
 	ExtensionTag,
@@ -32,6 +31,7 @@ import {
 	ShouldSkipProps,
 	Static,
 	KeyBindings,
+	legacyCommand,
 } from '@remirror/core';
 import type { CommandFunction } from '@remirror/core';
 import type { CreateEventHandlers } from '@remirror/extension-events';
@@ -68,16 +68,15 @@ function getLastWord(node?: ProsemirrorNode): string | null {
 /**
  * The static settings passed into a mention
  */
-export interface MentionOptions
-	extends Pick<
-		Suggester,
-		| 'invalidNodes'
-		| 'validNodes'
-		| 'invalidMarks'
-		| 'validMarks'
-		| 'isValidPosition'
-		| 'disableDecorations'
-	> {
+export interface MentionOptions extends Pick<
+	Suggester,
+	| 'invalidNodes'
+	| 'validNodes'
+	| 'invalidMarks'
+	| 'validMarks'
+	| 'isValidPosition'
+	| 'disableDecorations'
+> {
 	/**
 	 * Provide a custom tag for the mention
 	 */
@@ -316,7 +315,7 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 				);
 
 				const mentionClassName = matcher
-					? matcher.mentionClassName ?? DEFAULT_MATCHER.mentionClassName
+					? (matcher.mentionClassName ?? DEFAULT_MATCHER.mentionClassName)
 					: DEFAULT_MATCHER.mentionClassName;
 
 				return [
@@ -502,7 +501,7 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 	 * @param attrs - the options which set the values that will be used (in
 	 * case you want to override the defaults).
 	 */
-	@command()
+	@legacyCommand()
 	mentionExitHandler(
 		handler: SuggestChangeHandlerProps,
 		attrs: MentionChangeHandlerCommandAttributes = {},
@@ -578,7 +577,7 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 	/**
 	 * Select a field
 	 */
-	@command()
+	@legacyCommand()
 	selectField(
 		config: NamedMentionExtensionAttributes & KeepSelectionProps,
 	): CommandFunction {
@@ -614,7 +613,7 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 	/**
 	 * Create a new mention
 	 */
-	@command()
+	@legacyCommand()
 	createMention(
 		config: NamedMentionExtensionAttributes & KeepSelectionProps,
 	): CommandFunction {
@@ -624,7 +623,7 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 	/**
 	 * Update an existing mention.
 	 */
-	@command()
+	@legacyCommand()
 	updateMention(
 		config: NamedMentionExtensionAttributes & KeepSelectionProps,
 	): CommandFunction {
@@ -634,7 +633,7 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 	/**
 	 * Remove the mention(s) at the current selection or provided range.
 	 */
-	@command()
+	@legacyCommand()
 	removeMention({ range }: Partial<RangeProps> = {}): CommandFunction {
 		const value = removeMark({ type: this.type, expand: true, range });
 
@@ -734,7 +733,7 @@ class MentionExtension extends MarkExtension<MentionOptions> {
 					? {
 							from,
 							to,
-					  }
+						}
 					: undefined,
 				content: attributes.label,
 			})(props);
@@ -847,18 +846,17 @@ export type NamedMentionExtensionAttributes = ProsemirrorAttributes<
 /**
  * The options for the matchers which can be created by this extension.
  */
-export interface MentionExtensionMatcher
-	extends Pick<
-		Suggester,
-		| 'char'
-		| 'name'
-		| 'startOfLine'
-		| 'supportedCharacters'
-		| 'validPrefixCharacters'
-		| 'invalidPrefixCharacters'
-		| 'matchOffset'
-		| 'suggestClassName'
-	> {
+export interface MentionExtensionMatcher extends Pick<
+	Suggester,
+	| 'char'
+	| 'name'
+	| 'startOfLine'
+	| 'supportedCharacters'
+	| 'validPrefixCharacters'
+	| 'invalidPrefixCharacters'
+	| 'matchOffset'
+	| 'suggestClassName'
+> {
 	/**
 	 * Provide customs class names for the completed mention
 	 */

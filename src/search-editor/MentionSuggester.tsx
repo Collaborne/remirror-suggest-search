@@ -59,11 +59,10 @@ const useStyles = makeStyles()(theme => ({
 	},
 }));
 
-export interface MentionSuggesterProps
-	extends Pick<
-		UseMenuNavigationReturn<NamedMentionAtomNodeAttributes>,
-		'getItemProps' | 'indexIsHovered' | 'indexIsSelected' | 'getMenuProps'
-	> {
+export interface MentionSuggesterProps extends Pick<
+	UseMenuNavigationReturn<NamedMentionAtomNodeAttributes>,
+	'getItemProps' | 'indexIsHovered' | 'indexIsSelected' | 'getMenuProps'
+> {
 	options: NamedMentionAtomNodeAttributes[];
 	renderOption: (option: NamedMentionAtomNodeAttributes) => ReactElement | null;
 	renderSelectOption: (
