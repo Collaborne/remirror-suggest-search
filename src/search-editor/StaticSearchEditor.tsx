@@ -9,9 +9,10 @@ import {
 	useMemo,
 	useState,
 } from 'react';
-import { PiTextAlignLeft } from 'react-icons/pi';
+import { PiMagnifyingGlass } from 'react-icons/pi';
 import { EMPTY_NODE, RemirrorJSON } from 'remirror';
 import { NamedMentionAtomNodeAttributes } from 'remirror/dist-types/extensions';
+import { makeStyles } from 'tss-react/mui';
 
 import { useRenderMention } from './hooks/useRenderMention';
 import { Fields, MentionHandler, TextHandler } from './types';
@@ -20,19 +21,31 @@ import {
 	TEXT_ATOM_TYPE,
 } from './utils/search-to-remirror';
 
+const useStyles = makeStyles()({
+	searchChipIcon: {
+		flexShrink: 0,
+	},
+});
+
 const Text: TextHandler = ({ node }) => {
-	if (!node.text) {
+	const { classes } = useStyles();
+	const searchText = node.text?.trim();
+
+	if (!searchText) {
 		return null;
 	}
 
 	return (
-		<Tooltip title={node.text} arrow placement="top">
+		<Tooltip title={searchText} arrow placement="top">
 			<Chip
 				component="span"
 				variant="outlined"
-				label={'Prompt filter'}
+				label={searchText}
 				size="small"
-				icon={<PiTextAlignLeft />}
+				icon={<PiMagnifyingGlass size={12} />}
+				classes={{
+					icon: classes.searchChipIcon,
+				}}
 			/>
 		</Tooltip>
 	);
