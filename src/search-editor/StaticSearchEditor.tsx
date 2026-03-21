@@ -21,11 +21,14 @@ import {
 	TEXT_ATOM_TYPE,
 } from './utils/search-to-remirror';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
+	searchChip: {
+		maxWidth: theme.spacing(20),
+	},
 	searchChipIcon: {
 		flexShrink: 0,
 	},
-});
+}));
 
 const Text: TextHandler = ({ node }) => {
 	const { classes } = useStyles();
@@ -44,6 +47,7 @@ const Text: TextHandler = ({ node }) => {
 				size="small"
 				icon={<PiMagnifyingGlass size={12} />}
 				classes={{
+					root: classes.searchChip,
 					icon: classes.searchChipIcon,
 				}}
 			/>
