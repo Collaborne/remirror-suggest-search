@@ -22,6 +22,11 @@ import {
 } from './utils/search-to-remirror';
 
 const useStyles = makeStyles()(theme => ({
+	item: {
+		display: 'inline-flex',
+		marginRight: theme.spacing(0.5),
+		marginBottom: theme.spacing(0.5),
+	},
 	searchChip: {
 		maxWidth: theme.spacing(20),
 	},
@@ -66,6 +71,7 @@ export function StaticSearchEditor({
 	fields,
 	...props
 }: StaticSearchEditorProps) {
+	const { classes } = useStyles();
 	const [remirrorJson, setRemirrorJson] = useState<RemirrorJSON>(EMPTY_NODE);
 	useEffect(() => {
 		const fetchRemirrorContent = async () => {
@@ -92,9 +98,9 @@ export function StaticSearchEditor({
 				node.attrs.name as string,
 				node.attrs as NamedMentionAtomNodeAttributes,
 			);
-			return rendered;
+			return rendered ? <span className={classes.item}>{rendered}</span> : null;
 		},
-		[renderMention],
+		[classes.item, renderMention],
 	);
 
 	const typeMap: MarkMap = useMemo(() => {
