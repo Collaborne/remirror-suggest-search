@@ -24,8 +24,11 @@ import {
 const useStyles = makeStyles()(theme => ({
 	item: {
 		display: 'inline-flex',
+		// Ensure content is vertically centered within the line height
+		marginTop: theme.spacing(0.25),
+		marginBottom: theme.spacing(0.25),
+		// Left align with other content
 		marginRight: theme.spacing(0.5),
-		marginBottom: theme.spacing(0.5),
 	},
 	searchChip: {
 		maxWidth: theme.spacing(20),
