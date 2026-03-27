@@ -97,6 +97,17 @@ export const USERS = [
 ];
 
 export function useEditorMention() {
+	const renderOutlinedChip = (label: string | undefined, color: string) => {
+		return (
+			<Chip
+				label={label}
+				size="small"
+				variant="outlined"
+				sx={{ color, borderColor: color }}
+			/>
+		);
+	};
+
 	const renderTag = (params: { id: string }) => {
 		const tag = TAGS.find(t => t.id === params.id);
 
@@ -118,19 +129,21 @@ export function useEditorMention() {
 		return <Chip variant="filled" size="small" label={params.label} />;
 	};
 
-	const renderUser = (params: { id: string }) => {
-		const user = USERS.find(u => u.id === params.id);
-		return (
-			<Chip
-				label={user?.name}
-				size="small"
-				variant="filled"
-			/>
-		);
+	const renderList = (params: { id: string; label?: string }) => {
+		return renderOutlinedChip(params.label ?? params.id, '#7c3aed');
 	};
 
-	const renderSource = (params: { label: string }) => {
-		return <span style={{ fontWeight: 600 }}>{params.label}</span>;
+	const renderUser = (params: { id: string; label?: string }) => {
+		const user = USERS.find(u => u.id === params.id);
+		return renderOutlinedChip(user?.name ?? params.label ?? params.id, '#0284c7');
+	};
+
+	const renderSource = (params: { id?: string; label?: string }) => {
+		const source = SOURCES.find(item => item.id === params.id);
+		return renderOutlinedChip(
+			source?.name ?? params.label ?? params.id,
+			'#ea580c',
+		);
 	};
 
 	const userOptions = useMemo(
@@ -177,6 +190,7 @@ export function useEditorMention() {
 	return {
 		renderTag,
 		renderLabel,
+		renderList,
 		renderUser,
 		renderSource,
 		renderDate,

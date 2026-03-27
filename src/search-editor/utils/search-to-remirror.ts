@@ -128,6 +128,7 @@ async function toRemirrorContent(
 	fields: Fields,
 	createTextNodeJSON: CreateTextNodeJSON,
 	createMentionNodeJSON: CreateMentionNodeJSON,
+	options?: { useFallbackAttrsWhenMissing?: boolean },
 ): Promise<RemirrorJSON[]> {
 	if (typeof parsedSearch === 'string') {
 		if (parsedSearch.length > 0) {
@@ -152,11 +153,20 @@ async function toRemirrorContent(
 		}
 
 		const attrs = await field.getExtraAttrs?.(offset.value);
+		let mentionAttrs = attrs;
+
+		if (!mentionAttrs && options?.useFallbackAttrsWhenMissing) {
+			mentionAttrs = {
+				id: offset.value,
+				label: offset.value,
+				name: field.name,
+			};
+		}
 
 		const nodes: RemirrorJSON[] = [];
-		if (attrs) {
+		if (mentionAttrs) {
 			const mentionNodes = createMentionNodeJSON({
-				...attrs,
+				...mentionAttrs,
 				id: offset.value,
 				name: field.name,
 			});
@@ -243,6 +253,7 @@ export async function searchToStaticRemirror(
 		params.fields,
 		options?.showTextAsNode ? createTextNodeJSON : defaultCreateTextNodeJSON,
 		createMentionAtomNodeJSON,
+		{ useFallbackAttrsWhenMissing: true },
 	);
 	let textAtomNodes: RemirrorJSON[] = [];
 	if (options?.showTextAsNode) {

@@ -17,14 +17,14 @@ export default {
 	component: StaticSearchEditor,
 };
 
-const SEARCH_QUERY = `list:item1,item2,item3 user:${USERS[0].id} tag:${TAGS[0].id} source:${SOURCES[0].id} ger`;
+const SEARCH_QUERY = `list:item1,item2,item3 ${TAGS.slice(0, 3).map(tag => `tag:${tag.id}`).join(' ')} creator:${USERS[0].id} source:${SOURCES[0].id} ger`;
 const LONG_SEARCH_QUERY =
 	'find highlights about onboarding friction across every customer interview and support ticket';
 
 const Template: StoryFn<Omit<StaticSearchEditorProps, 'fields'>> = (
 	props: JSX.IntrinsicAttributes & Omit<StaticSearchEditorProps, 'fields'>,
 ) => {
-	const { renderSource, renderUser, renderTag, renderDate } =
+	const { renderSource, renderUser, renderTag, renderDate, renderList } =
 		useEditorMention();
 
 	const fields: Fields = useMemo(
@@ -32,7 +32,7 @@ const Template: StoryFn<Omit<StaticSearchEditorProps, 'fields'>> = (
 			list: {
 				type: 'keyword',
 				name: 'list',
-				render: ({ id }) => <>{id}</>,
+				render: renderList,
 			},
 			tag: {
 				type: 'keyword',
@@ -71,7 +71,7 @@ const Template: StoryFn<Omit<StaticSearchEditorProps, 'fields'>> = (
 				render: renderSource,
 			},
 		}),
-		[renderSource, renderUser, renderTag, renderDate],
+		[renderSource, renderUser, renderTag, renderDate, renderList],
 	);
 
 	return (
