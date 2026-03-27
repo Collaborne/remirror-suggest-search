@@ -11,7 +11,7 @@ import {
 } from 'react';
 import { PiMagnifyingGlass } from 'react-icons/pi';
 import { EMPTY_NODE, RemirrorJSON } from 'remirror';
-import { NamedMentionAtomNodeAttributes } from 'remirror/dist-types/extensions';
+import { NamedMentionAtomNodeAttributes } from 'remirror/extensions';
 import { makeStyles } from 'tss-react/mui';
 
 import { useRenderMention } from './hooks/useRenderMention';
