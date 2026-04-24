@@ -4,6 +4,7 @@ import type { MarkMap } from '@remirror/react-renderer';
 import {
 	MouseEventHandler,
 	ReactElement,
+	ReactNode,
 	useCallback,
 	useEffect,
 	useMemo,
@@ -36,6 +37,11 @@ const useStyles = makeStyles()(theme => ({
 	searchChipIcon: {
 		flexShrink: 0,
 	},
+	paragraph: {
+		display: 'flex',
+		flexWrap: 'wrap',
+		alignItems: 'center',
+	},
 }));
 
 const Text: TextHandler = ({ node }) => {
@@ -62,6 +68,15 @@ const Text: TextHandler = ({ node }) => {
 		</Tooltip>
 	);
 };
+
+function Paragraph(props: { children?: ReactNode }) {
+	const { classes } = useStyles();
+	return (
+		// Render paragraphs as div elements to avoid invalid block nesting from inline chips.
+		<div className={classes.paragraph}>{props.children}</div>
+	);
+}
+
 export interface StaticSearchEditorProps {
 	searchQuery?: string;
 	fields: Fields;
@@ -111,8 +126,7 @@ export function StaticSearchEditor({
 			doc: Doc,
 			[TEXT_ATOM_TYPE]: Text,
 			mentionAtom: mentionAtomHandler,
-			// Render paragraphs as div elements to avoid invalid block nesting from inline chips.
-			paragraph: 'div',
+			paragraph: Paragraph,
 		};
 		return result;
 	}, [mentionAtomHandler]);
